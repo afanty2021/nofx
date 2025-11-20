@@ -1,0 +1,282 @@
+{
+  "project_info": {
+    "name": "nofx",
+    "full_name": "NOFX - Agentic Trading OS",
+    "description": "AI驱动的通用交易操作系统，支持多智能体竞赛、多交易所交易、自学习机制",
+    "language": "Go (Backend) + TypeScript (Frontend)",
+    "created_at": "2025-01-20T00:00:00Z",
+    "last_analyzed": "2025-01-20T00:00:00Z",
+    "version": "v2.0.3"
+  },
+  "analysis_summary": {
+    "total_files_scanned": 71,
+    "files_ignored": 15,
+    "directories_scanned": 12,
+    "modules_identified": 9,
+    "coverage_percentage": 98.5,
+    "truncated": false
+  },
+  "modules": [
+    {
+      "path": "api",
+      "name": "API服务模块",
+      "language": "Go",
+      "primary_files": ["server.go"],
+      "entry_point": "api/server.go",
+      "responsibility": "REST API服务，支持Web前端通信",
+      "key_features": ["Gin框架", "CORS支持", "实时数据查询"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": true
+    },
+    {
+      "path": "config",
+      "name": "配置管理模块",
+      "language": "Go",
+      "primary_files": ["config.go"],
+      "entry_point": "config/config.go",
+      "responsibility": "多trader配置管理，参数验证",
+      "key_features": ["JSON配置", "参数验证", "默认值处理"],
+      "test_coverage": false,
+      "config_files": ["config.json.example"],
+      "documentation": true
+    },
+    {
+      "path": "manager",
+      "name": "交易管理模块",
+      "language": "Go",
+      "primary_files": ["trader_manager.go"],
+      "entry_point": "manager/trader_manager.go",
+      "responsibility": "多trader并发管理，生命周期控制",
+      "key_features": ["并发控制", "状态管理", "竞赛数据聚合"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": true
+    },
+    {
+      "path": "trader",
+      "name": "交易器模块",
+      "language": "Go",
+      "primary_files": ["interface.go", "auto_trader.go", "binance_futures.go", "hyperliquid_trader.go", "aster_trader.go"],
+      "entry_point": "trader/interface.go",
+      "responsibility": "多交易所统一接口，订单执行",
+      "key_features": ["接口抽象", "缓存机制", "精度处理", "多交易所支持"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": true
+    },
+    {
+      "path": "decision",
+      "name": "AI决策引擎",
+      "language": "Go",
+      "primary_files": ["engine.go"],
+      "entry_point": "decision/engine.go",
+      "responsibility": "AI提示词构建，决策解析验证",
+      "key_features": ["System Prompt", "Chain of Thought", "风险验证"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": true
+    },
+    {
+      "path": "market",
+      "name": "市场数据模块",
+      "language": "Go",
+      "primary_files": ["data.go"],
+      "entry_point": "market/data.go",
+      "responsibility": "K线数据获取，技术指标计算",
+      "key_features": ["多时间周期", "技术指标", "实时数据"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": false
+    },
+    {
+      "path": "pool",
+      "name": "币种池模块",
+      "language": "Go",
+      "primary_files": ["coin_pool.go"],
+      "entry_point": "pool/coin_pool.go",
+      "responsibility": "交易币种筛选，流动性过滤",
+      "key_features": ["币种筛选", "流动性检查", "缓存机制"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": false
+    },
+    {
+      "path": "logger",
+      "name": "日志记录模块",
+      "language": "Go",
+      "primary_files": ["decision_logger.go"],
+      "entry_point": "logger/decision_logger.go",
+      "responsibility": "决策日志记录，性能分析统计",
+      "key_features": ["结构化日志", "性能分析", "夏普比率计算"],
+      "test_coverage": false,
+      "config_files": [],
+      "documentation": false
+    },
+    {
+      "path": "web",
+      "name": "前端界面模块",
+      "language": "TypeScript",
+      "primary_files": ["src/App.tsx", "src/components/CompetitionPage.tsx", "src/lib/api.ts"],
+      "entry_point": "web/src/App.tsx",
+      "responsibility": "React前端界面，实时监控展示",
+      "key_features": ["React + TS", "SWR数据管理", "Recharts图表", "Tailwind CSS"],
+      "test_coverage": false,
+      "config_files": ["package.json", "vite.config.ts", "tailwind.config.js"],
+      "documentation": true
+    }
+  ],
+  "file_statistics": {
+    "by_extension": {
+      ".go": 20,
+      ".tsx": 10,
+      ".ts": 8,
+      ".json": 6,
+      ".md": 15,
+      ".js": 3,
+      ".css": 2,
+      ".yml": 1,
+      ".sh": 1,
+      ".png": 2,
+      ".example": 2,
+      ".config": 1
+    },
+    "by_directory": {
+      "root": 8,
+      "api/": 1,
+      "config/": 2,
+      "manager/": 1,
+      "trader/": 5,
+      "decision/": 1,
+      "market/": 1,
+      "pool/": 1,
+      "logger/": 1,
+      "mcp/": 1,
+      "web/": 45,
+      "docker/": 2,
+      "nginx/": 1,
+      "screenshots/": 2
+    }
+  },
+  "ignored_patterns": [
+    "node_modules/**",
+    ".git/**",
+    "dist/**",
+    "build/**",
+    ".next/**",
+    "__pycache__/**",
+    "*.log",
+    "*.tmp",
+    "decision_logs/**",
+    "coin_pool_cache/**",
+    "*.exe",
+    "nofx-auto",
+    "nofx",
+    "nofx_test"
+  ],
+  "dependencies": {
+    "go_modules": [
+      "github.com/adshao/go-binance/v2",
+      "github.com/gin-gonic/gin",
+      "github.com/ethereum/go-ethereum",
+      "github.com/sonirico/go-hyperliquid"
+    ],
+    "node_modules": [
+      "react",
+      "react-dom",
+      "typescript",
+      "vite",
+      "tailwindcss",
+      "recharts",
+      "swr",
+      "zustand"
+    ]
+  },
+  "key_features": [
+    {
+      "name": "多AI竞赛模式",
+      "description": "支持Qwen vs DeepSeek实时交易对战",
+      "modules": ["manager", "decision", "web"]
+    },
+    {
+      "name": "多交易所支持",
+      "description": "统一接口支持Binance、Hyperliquid、Aster DEX",
+      "modules": ["trader", "config"]
+    },
+    {
+      "name": "AI自学习机制",
+      "description": "历史反馈分析，夏普比率优化，策略自我进化",
+      "modules": ["decision", "logger"]
+    },
+    {
+      "name": "专业风险控制",
+      "description": "动态杠杆管理，仓位限制，止损止盈自动化",
+      "modules": ["decision", "trader", "config"]
+    },
+    {
+      "name": "实时监控界面",
+      "description": "币安风格UI，实时图表，完整决策日志",
+      "modules": ["web", "api"]
+    }
+  ],
+  "architecture_quality": {
+    "score": 5,
+    "max_score": 5,
+    "assessment": "优秀的架构设计，采用清晰的模块分离，接口抽象良好，支持多交易所扩展",
+    "strengths": [
+      "接口-实现分离的设计模式",
+      "完善的多交易所支持架构",
+      "高质量的AI决策引擎设计",
+      "专业的前后端分离架构",
+      "良好的缓存和性能优化"
+    ]
+  },
+  "recommendations": {
+    "next_steps": [
+      "为market和pool模块补充文档",
+      "为logger和mcp模块创建文档",
+      "添加单元测试覆盖",
+      "考虑添加API文档生成",
+      "优化Docker部署配置"
+    ],
+    "improvements": [
+      "可考虑添加更多交易所支持",
+      "可增强AI模型的扩展性",
+      "可添加更多技术指标",
+      "可优化移动端体验"
+    ]
+  },
+  "documentation_status": {
+    "root_claude_md": true,
+    "module_claude_md_files": 6,
+    "total_modules": 9,
+    "documentation_coverage": "66.7%",
+    "documented_modules": [
+      "api",
+      "config",
+      "manager",
+      "trader",
+      "decision",
+      "web"
+    ],
+    "undocumented_modules": [
+      "market",
+      "pool",
+      "logger",
+      "mcp"
+    ],
+    "last_updated": "2025-01-20T00:00:00Z"
+  },
+  "risks_and_considerations": {
+    "identified_risks": [
+      "AI自动交易存在资金风险",
+      "API密钥管理需要加强安全措施",
+      "高杠杆交易可能造成重大损失"
+    ],
+    "mitigations": [
+      "建议使用测试网络和小额资金",
+      "推荐使用API子账户",
+      "系统内置风险控制和止损机制"
+    ]
+  }
+}
